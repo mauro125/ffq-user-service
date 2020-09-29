@@ -39,3 +39,4 @@ typings
 
 #Ignore .class files
 *.class
+/target/

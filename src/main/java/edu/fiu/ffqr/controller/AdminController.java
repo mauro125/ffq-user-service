@@ -31,7 +31,7 @@ import edu.fiu.ffqr.service.AdminService;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*")
 @RequestMapping("/admins")
 public class AdminController {
 
