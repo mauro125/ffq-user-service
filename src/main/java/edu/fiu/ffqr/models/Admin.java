@@ -30,7 +30,7 @@ public class User implements Serializable {
 */
 
 @Document(collection="admins")
-public class Admin implements Serializable {
+public class Admin extends User implements Serializable {
 
 	@Id
 	private ObjectId _id;
@@ -38,8 +38,6 @@ public class Admin implements Serializable {
 	private String userId; 
 	@JsonProperty("username")
 	private String username;
-	@JsonProperty("userpassword")
-	private String userpassword;
 	@JsonProperty("usertype")
     private String usertype;
 	@JsonProperty("firstname")
@@ -86,14 +84,6 @@ public class Admin implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getUserpassword(){
-		return this.userpassword;
-	}
-
-	public void setUserpassword(String userpassword){
-		this.userpassword = userpassword;
 	}
 
 	public String getUsertype(){
