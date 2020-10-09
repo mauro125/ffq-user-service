@@ -26,7 +26,7 @@ import edu.fiu.ffqr.models.Authenticate;
 import edu.fiu.ffqr.models.SysUser;
 import edu.fiu.ffqr.repositories.AdminRepository;
 import edu.fiu.ffqr.models.Admin;
-import edu.fiu.ffqr.models.Research;
+import edu.fiu.ffqr.models.Researcher;
 import edu.fiu.ffqr.repositories.ResearchRepository;
 import edu.fiu.ffqr.service.SysUserService;
 import edu.fiu.ffqr.service.AdminService;
@@ -35,7 +35,7 @@ import edu.fiu.ffqr.service.ResearchService;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/research")
+@RequestMapping("/researchers")
 public class ResearchController {
 
     @Autowired
@@ -54,19 +54,19 @@ public class ResearchController {
     
     
     @GetMapping("/all")
-    public List<Research> allUsers() throws JsonProcessingException {
+    public List<Researcher> allUsers() throws JsonProcessingException {
         
-        List<Research> users = researchService.getAll();
+        List<Researcher> users = researchService.getAll();
         return users;
     }  
 
     @GetMapping("/{userID}")
-	public Research gUserApplication(@PathVariable("userID") String userID) {
+	public Researcher gUserApplication(@PathVariable("userID") String userID) {
 		return researchService.getUserByUserId(userID);
 	}
     
     @PostMapping("/createuser")
-    public Research createUser(@RequestBody Research user) throws JsonProcessingException {
+    public Researcher createUser(@RequestBody Researcher user) throws JsonProcessingException {
 
       if (researchService.getUserByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " already exists");
@@ -76,13 +76,13 @@ public class ResearchController {
   }
 
   @PostMapping("/updateuser")
-    public void updateUser(@RequestBody Research user) throws JsonProcessingException {
+    public void updateUser(@RequestBody Researcher user) throws JsonProcessingException {
         
         if (researchService.getUserByUserId(user.getUserId()) == null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
         }
 
-        Research currentUser = researchService.getUserByUserId(user.getUserId());
+        Researcher currentUser = researchService.getUserByUserId(user.getUserId());
 
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
@@ -97,7 +97,7 @@ public class ResearchController {
 
 
     @PostMapping("/create")
-    public Research create(@RequestBody Research item) throws JsonProcessingException {
+    public Researcher create(@RequestBody Researcher item) throws JsonProcessingException {
         
         if (researchService.getUserByUsername(item.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + item.getUsername() + " already exists");
@@ -111,10 +111,10 @@ public class ResearchController {
    
 	
 	@PostMapping("/createMany")
-	public ArrayList<Research> create(@RequestBody ArrayList<Research> users) {
-		Research user = null;
+	public ArrayList<Researcher> create(@RequestBody ArrayList<Researcher> users) {
+		Researcher user = null;
 		
-		for(Research s : users)
+		for(Researcher s : users)
 		{
 			user = researchService.create(s);
 		}
@@ -131,7 +131,7 @@ public class ResearchController {
       }
       
     @RequestMapping("/login")
-    public boolean login(@RequestBody Research user) {
+    public boolean login(@RequestBody Researcher user) {
         return
           user.getUsername().equals("user") && user.getUserpassword().equals("password");
     }

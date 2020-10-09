@@ -11,8 +11,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 
-@Document(collection="research")
-public class Research implements Serializable {
+@Document(collection="researchers")
+public class Researcher implements Serializable {
 
 	@Id
 	private ObjectId _id;
@@ -23,19 +23,19 @@ public class Research implements Serializable {
 	@JsonProperty("userpassword")
 	private String userpassword;
 	@JsonProperty("usertype")
-    private String usertype;
+        private String usertype;
 	@JsonProperty("firstname")
 	private String firstname;
 	@JsonProperty("lastname")
 	private String lastname;
 	@JsonProperty("isactive")
-    private boolean isactive;
+        private boolean isactive;
 	
 
 
-	public Research() {}
+	public Researcher() {}
 	
-	public Research(String userId, String username, String userpassword, String usertype, String firstname, String lastname, boolean isactive){
+	public Researcher(String userId, String username, String userpassword, String usertype, String firstname, String lastname, boolean isactive){
         this.userId = userId;
 		this.username = username;
 		this.userpassword = userpassword;

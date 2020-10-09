@@ -22,7 +22,7 @@ import edu.fiu.ffqr.controller.ResearchController;
 import edu.fiu.ffqr.models.Clinic;
 import edu.fiu.ffqr.models.Clinician;
 import edu.fiu.ffqr.models.Parent;
-import edu.fiu.ffqr.models.Research;
+import edu.fiu.ffqr.models.Researcher;
 import edu.fiu.ffqr.repositories.ParentRepository;
 import edu.fiu.ffqr.repositories.ClinicRepository;
 import edu.fiu.ffqr.repositories.ClinicianRepository;
@@ -256,15 +256,15 @@ public class DataLoader {
 			JSONArray jsonArray = (JSONArray) jsonParser
 				.parse(new InputStreamReader(inputStream));
 			ObjectMapper mapper = new ObjectMapper();
-			List<Research> userList = new ArrayList<>();
+			List<Researcher> userList = new ArrayList<>();
 		
 			for (Object object : jsonArray) {
 				JSONObject jsonObject = (JSONObject) object;
-				Research item = mapper.readValue(jsonObject.toString(), Research.class);
+				Researcher item = mapper.readValue(jsonObject.toString(), Researcher.class);
 				userList.add(item);
 			}
 			
-			for(Research item : userList) {
+			for(Researcher item : userList) {
 				System.out.println(item.getUsername() + "---- Loaded!");
 				this.researchController.create(item);
 			}

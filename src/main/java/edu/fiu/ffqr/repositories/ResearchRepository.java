@@ -8,16 +8,16 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.fiu.ffqr.models.Admin;
-import edu.fiu.ffqr.models.Research;
+import edu.fiu.ffqr.models.Researcher;
 
 @Repository
-public interface ResearchRepository extends MongoRepository<Research, String> {
+public interface ResearchRepository extends MongoRepository<Researcher, String> {
 
-  Research getUserBy_id(ObjectId _id);
+  Researcher getUserBy_id(ObjectId _id);
 
-  Research getByUserId(String userId);
+  Researcher getByUserId(String userId);
 	
-  Research findByUsername(String username);
+  Researcher findByUsername(String username);
   
     
 }
