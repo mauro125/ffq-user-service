@@ -40,3 +40,6 @@ typings
 #Ignore .class files
 *.class
 /target/
+/.idea/
+/.settings/
+ffq-user-service.iml
