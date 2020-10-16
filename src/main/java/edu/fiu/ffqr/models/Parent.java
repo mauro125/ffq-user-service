@@ -29,8 +29,12 @@ public class Parent extends User implements Serializable{
     private String lastname;
     @JsonProperty("assignedclinic")
     private String assignedclinic;
-	@JsonProperty("assignedclinician")
+    @JsonProperty("assignedclinician")
     private String assignedclinician;
+    @JsonProperty("assigneResearcherOrganization")
+    private String assignedResearcherOrganization;
+    @JsonProperty("assigneResearcherUser")
+    private String assignedResearcherUser;
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
     @JsonProperty("isactive")
@@ -38,8 +42,10 @@ public class Parent extends User implements Serializable{
 
 	public Parent() {}
 	
-    public Parent(String userId, String username, String userpassword, String usertype, String firstname, String lastname, String assignedclinic,
-    String assignedclinician, ArrayList<String> childrennames, boolean isactive){
+    public Parent(String userId, String username, String userpassword, String usertype, 
+            String firstname, String lastname, String assignedclinic,
+            String assignedclinician, String assigneResearcherOrganization,
+            String assigneResearcherUser, ArrayList<String> childrennames, boolean isactive){
         this.userId = userId;
 		this.username = username;
         this.userpassword = userpassword;
@@ -50,6 +56,8 @@ public class Parent extends User implements Serializable{
         this.assignedclinician = assignedclinician;
         this.childrennames = childrennames;
         this.isactive = isactive;
+        this.assignedResearcherOrganization = assigneResearcherOrganization;
+        this.assignedResearcherUser = assigneResearcherUser;
 
     }
 
@@ -111,6 +119,21 @@ public class Parent extends User implements Serializable{
             
     }
 
+    public String getAssignedResearcherOrganization() {
+        return this.assignedResearcherOrganization;
+    }
+    public void setAssignedResearcherOrganization(String assignedResearcherOrganization) {
+        this.assignedResearcherOrganization = assignedResearcherOrganization;
+            
+    }
+    
+    public String getAssignedResearcherUser() {
+        return this.assignedResearcherUser;
+    }
+    public void setAssignedResearcherUser(String assignedResearcherUser) {
+        this.assignedResearcherUser = assignedResearcherUser;
+            
+    }
 	public void setUsername(String username) {
 		this.username = username;
 	}
