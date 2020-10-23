@@ -29,8 +29,8 @@ public class Participants extends User implements Serializable{
     private String lastname;
     @JsonProperty("assignedResearcherInst")
     private String assignedResearcherInst;
-    @JsonProperty("assignedResearcherUser")
-    private String assignedResearcherUser;    
+    @JsonProperty("assignedResearcherUsers")
+    private List<String> assignedResearcherUsers;    
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
     @JsonProperty("isactive")
@@ -40,7 +40,7 @@ public class Participants extends User implements Serializable{
 	
     public Participants(String userId, String username, String userpassword, String usertype, 
             String firstname, String lastname, String assignedResearcherInst,
-            String assignedResearcherUser, ArrayList<String> childrennames, boolean isactive){
+            List<String> assignedResearcherUsers, ArrayList<String> childrennames, boolean isactive){
         this.userId = userId;
 		this.username = username;
         this.userpassword = userpassword;
@@ -48,7 +48,7 @@ public class Participants extends User implements Serializable{
         this.firstname = firstname;
         this.lastname = lastname;
         this.assignedResearcherInst = assignedResearcherInst;
-        this.assignedResearcherUser = assignedResearcherUser;
+        this.assignedResearcherUsers = assignedResearcherUsers;
         this.childrennames = childrennames;
         this.isactive = isactive;
        
@@ -106,11 +106,11 @@ public class Participants extends User implements Serializable{
             
     }
 
-    public String getAssignedResearcherUser() {
-        return this.assignedResearcherUser;
+    public List<String> getAssignedResearcherUser() {
+        return this.assignedResearcherUsers;
     }
-    public void setAssignedResearcherUser(String assignedResearcherUser) {
-        this.assignedResearcherUser = assignedResearcherUser;
+    public void setAssignedResearcherUser(List<String> assignedResearcherUser) {
+        this.assignedResearcherUsers = assignedResearcherUser;
             
     }
 
