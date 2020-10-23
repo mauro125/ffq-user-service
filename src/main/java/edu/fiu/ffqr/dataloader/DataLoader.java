@@ -19,17 +19,20 @@ import edu.fiu.ffqr.controller.ClinicController;
 import edu.fiu.ffqr.controller.ClinicianController;
 import edu.fiu.ffqr.controller.ParentController;
 import edu.fiu.ffqr.controller.ResearchController;
-import edu.fiu.ffqr.controller.ResearcherParentController;
+import edu.fiu.ffqr.controller.ParticipantsController;
 import edu.fiu.ffqr.models.Clinic;
 import edu.fiu.ffqr.models.Clinician;
 import edu.fiu.ffqr.models.Parent;
-import edu.fiu.ffqr.models.ResearcherParent;
+import edu.fiu.ffqr.models.Participants;
 import edu.fiu.ffqr.models.Researcher;
+import edu.fiu.ffqr.models.ResearchInstitution;
 import edu.fiu.ffqr.repositories.ParentRepository;
 import edu.fiu.ffqr.repositories.ClinicRepository;
 import edu.fiu.ffqr.repositories.ClinicianRepository;
 import edu.fiu.ffqr.repositories.ResearchRepository;
-import edu.fiu.ffqr.repositories.ResearcherParentRepository;
+import edu.fiu.ffqr.repositories.ParticipantsRepository;
+import edu.fiu.ffqr.repositories.ResearchInstitutionRepository;
+import edu.fiu.ffqr.controller.ResearchInstitutionController;
 
 @Component
 public class DataLoader {
@@ -46,8 +49,10 @@ public class DataLoader {
 	private ClinicRepository clinicRepository;
     private ResearchController researchController;
     private ResearchRepository researchRepository;
-    private ResearcherParentController researcherParentController;
-    private ResearcherParentRepository researcherParentRepository;
+    private ParticipantsController researcherParentController;
+    private ParticipantsRepository researcherParentRepository;
+    private ResearchInstitutionController researchInstitutionController;
+    private ResearchInstitutionRepository researchInstitutionRepository;
 
 
 	
@@ -59,7 +64,8 @@ public class DataLoader {
 			ParentController parentController, ParentRepository parentRepository,
 			ClinicController clinicController, ClinicRepository clinicRepository, 
                         ResearchController researchController, ResearchRepository researchRepository,
-                        ResearcherParentController researcherParentController, ResearcherParentRepository researcherParentRepository) { //Added extra parameter (SysUsersRepository sysUsersRepository)
+                        ParticipantsController researcherParentController, ParticipantsRepository researcherParentRepository,
+                        ResearchInstitutionController researchInstitutionController, ResearchInstitutionRepository researchInstitutionRepository) { //Added extra parameter (SysUsersRepository sysUsersRepository)
 		this.sysUsersRepository = sysUsersRepository;  //Added for users test
 		this.sysUserController = sysUserController;    //Added for users test
 		this.adminController = adminController;      	   //Added for users test
@@ -74,6 +80,8 @@ public class DataLoader {
                 this.researchRepository = researchRepository;
                 this.researcherParentController = researcherParentController;
                 this.researcherParentRepository = researcherParentRepository;
+                this.researchInstitutionController = researchInstitutionController;
+                this.researchInstitutionRepository = researchInstitutionRepository;
                 
 	}
 	
@@ -277,20 +285,20 @@ public class DataLoader {
 				this.researchController.create(item);
 			}
 		} catch (Exception e) {
-			System.err.println("An error occurred while loading System Food Items Recommendations: ");
+			System.err.println("An error occurred while loading Researchers: ");
 			e.printStackTrace();
 		}		
 
 	}
         
-        public void loadResearcherParents() {
-		System.out.println("<------- Loading Researcher Parents... ------->");
+         public void loadResearchInstitution() {
+		System.out.println("<------- Loading Research Institution... ------->");
 			
-		this.researcherParentRepository.deleteAll();
+		this.researchInstitutionRepository.deleteAll();
 		
 		try {
 		
-			String resourceName = "ResearcherParentPayload.json";		
+			String resourceName = "ResearchInstitutionPayload.json";		
 		
 			ClassLoader classLoader = getClass().getClassLoader();
 			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
@@ -298,20 +306,54 @@ public class DataLoader {
 			JSONArray jsonArray = (JSONArray) jsonParser
 				.parse(new InputStreamReader(inputStream));
 			ObjectMapper mapper = new ObjectMapper();
-			List<ResearcherParent> parentList = new ArrayList<>();
+			List<ResearchInstitution> userList = new ArrayList<>();
 		
 			for (Object object : jsonArray) {
 				JSONObject jsonObject = (JSONObject) object;
-				ResearcherParent item = mapper.readValue(jsonObject.toString(), ResearcherParent.class);
+				ResearchInstitution item = mapper.readValue(jsonObject.toString(), ResearchInstitution.class);
+				userList.add(item);
+			}
+			
+			for(ResearchInstitution item : userList) {
+				System.out.println(item.GetInstitutionName()+ "---- Loaded!");
+				this.researchInstitutionController.create(item);
+			}
+		} catch (Exception e) {
+			System.err.println("An error occurred while loading Research Institution: ");
+			e.printStackTrace();
+		}		
+
+	}
+        
+        public void loadResearcherParticipants() {
+		System.out.println("<------- Loading Researcher Participants... ------->");
+			
+		this.researcherParentRepository.deleteAll();
+		
+		try {
+		
+			String resourceName = "ResearcherParticipantPayload.json";		
+		
+			ClassLoader classLoader = getClass().getClassLoader();
+			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
+			JSONParser jsonParser = new JSONParser();		
+			JSONArray jsonArray = (JSONArray) jsonParser
+				.parse(new InputStreamReader(inputStream));
+			ObjectMapper mapper = new ObjectMapper();
+			List<Participants> parentList = new ArrayList<>();
+		
+			for (Object object : jsonArray) {
+				JSONObject jsonObject = (JSONObject) object;
+				Participants item = mapper.readValue(jsonObject.toString(), Participants.class);
 				parentList.add(item);
 			}
 			
-			for(ResearcherParent item : parentList) {
+			for(Participants item : parentList) {
 				System.out.println(item.getUsername() + "---- Loaded!");
 				this.researcherParentController.create(item);
 			}
 		} catch (Exception e) {
-			System.err.println("An error occurred while loading System Food Items Recommendations: ");
+			System.err.println("An error occurred while loading Participants: ");
 			e.printStackTrace();
 		}		
 

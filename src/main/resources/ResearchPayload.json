@@ -6,6 +6,8 @@
     "usertype": "researcher",
     "firstname": "Cristina",
     "lastname": "Palacio",
+    "AssignedResearchInstitutionId":"1",
     "isactive": true
+   
   }
 ]

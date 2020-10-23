@@ -26,8 +26,10 @@ public class Researcher implements Serializable {
         private String usertype;
 	@JsonProperty("firstname")
 	private String firstname;
-	@JsonProperty("lastname")
-	private String lastname;
+	@JsonProperty("lastname")      
+	private String lastname;        
+        @JsonProperty("AssignedResearchInstitutionId")      
+	private String AssignedResearchInstitutionId;           
 	@JsonProperty("isactive")
         private boolean isactive;
 	
@@ -35,7 +37,9 @@ public class Researcher implements Serializable {
 
 	public Researcher() {}
 	
-	public Researcher(String userId, String username, String userpassword, String usertype, String firstname, String lastname, boolean isactive){
+	public Researcher(String userId, String username, String userpassword, 
+                String usertype, String firstname, String lastname, boolean isactive,
+                String AssignedResearchInstitutionId){
         this.userId = userId;
 		this.username = username;
 		this.userpassword = userpassword;
@@ -43,16 +47,14 @@ public class Researcher implements Serializable {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.isactive = isactive;
+                this.AssignedResearchInstitutionId = AssignedResearchInstitutionId;
 
     }
 	
 
 	public ObjectId getId() {
-        return this._id;
-    }
-	/*public void setId(ObjectId id) {
-        this._id = id;
-	}*/
+        return this._id;    }
+
 	
 	public String getUserId() {
 		return this.userId;
@@ -107,5 +109,14 @@ public class Researcher implements Serializable {
     public boolean getIsactive(){
         return this.isactive;
     }
+    
+    public void setAssignedResearchInstitutionId(String AssignedResearchInstitutionId){
+        this.AssignedResearchInstitutionId = AssignedResearchInstitutionId;
+    }
 
+    public String getAssignedResearchInstitutionId(){
+        return this.AssignedResearchInstitutionId;
+    }
+
+    
 }
