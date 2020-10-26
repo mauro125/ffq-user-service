@@ -77,9 +77,6 @@ public class ClinicController{
         currentClinic.setHeadclinician(clinic.getHeadclinician());
         currentClinic.setIsactive(clinic.getIsactive());
 
-
-
-
         clinicRepository.save(currentClinic);
     }
 
@@ -94,10 +91,6 @@ public class ClinicController{
         return clinicService.create(item);
     }
 
-    
-    
-   
-	
 	@PostMapping("/createMany")
 	public ArrayList<Clinic> create(@RequestBody ArrayList<Clinic> clinics) {
 		Clinic clinic = null;
@@ -109,9 +102,7 @@ public class ClinicController{
 		
 		return clinics;
 	}
-	
-	  
-	  
+
 	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String clinicId) {
         clinicService.deleteById(clinicId);

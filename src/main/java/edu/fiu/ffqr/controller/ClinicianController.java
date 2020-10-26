@@ -97,24 +97,19 @@ public class ClinicianController{
         return clinicianService.create(item);
     }
 
-    
-    
-   
-	
-	@PostMapping("/createMany")
+	@PostMapping("/createManyClinicians")
 	public ArrayList<Clinician> create(@RequestBody ArrayList<Clinician> users) {
 		Clinician user = null;
+		ArrayList<Clinician> createdUsers = new ArrayList<>();
 		
-		for(Clinician s : users)
+		for(Clinician clinician : users)
 		{
-			user = clinicianService.create(s);
+			createdUsers.add(clinicianService.create(clinician));
 		}
 		
-		return users;
+		return createdUsers;
 	}
-	
-	
-	
+
 	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String userId) {
         Clinician clinician = this.clinicianService.getClinicianByUserId(userId);

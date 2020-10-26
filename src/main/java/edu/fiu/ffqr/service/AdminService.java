@@ -45,8 +45,4 @@ public class AdminService extends UserService<Admin, AdminRepository> {
 		Admin fi = repository.getByUserId(userId);
 		repository.delete(fi);
 	}
-	/*public List<User> getAllAdmins(boolean admin)	{
-		return usersRepository.getAdmins(admin);
-	}*/
-	
 }
