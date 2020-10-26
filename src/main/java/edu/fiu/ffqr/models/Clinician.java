@@ -14,28 +14,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Document(collection="clinicians")
 public class Clinician extends User implements Serializable{
 
-    @Id
-    private ObjectId _id;  
-	@JsonProperty("userId")
-	private String userId; 
-	@JsonProperty("username")
-	private String username;
-    @JsonProperty("usertype")
-    private String usertype;
     @JsonProperty("abbreviation")
     private String abbreviation;
-    @JsonProperty("firstname")
-    private String firstname;
-    @JsonProperty("lastname")
-	private String lastname;
     @JsonProperty("assignedclinic")
     private String assignedclinic;
     @JsonProperty("previousclinics")
     private ArrayList<String> previousclinics = new ArrayList<String>();
-    @JsonProperty("isactive")
-    private boolean isactive;
-    
-
 
 	public Clinician() {}
 	
@@ -54,26 +38,6 @@ public class Clinician extends User implements Serializable{
 
     }
 
-
-    public ObjectId getId() {
-        return this._id;
-    }
-	/*public void setId(ObjectId id) {
-        this._id = id;
-    }*/
-      
-	public String getUserId() {
-		return this.userId;
-	}
-
-	public void setUserId(String userId) {
-		this.userId = userId;
-	}
-
-	public String getUsername() {
-		return this.username;
-    }
-
     public String getAbbreviation(){
         return this.abbreviation;
     }
@@ -81,27 +45,6 @@ public class Clinician extends User implements Serializable{
         this.abbreviation = abbreviation;
     }
 
-    public String getUsertype(){
-        return this.usertype;
-    }
-    public void setUsertype(String usertype){
-        this.usertype = usertype;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public String getFirstname() {
-        return this.firstname;
-    }
-    public String getLastname() {
-        return this.lastname;
-    }
-    
     public String getAssignedclinic() {
         return this.assignedclinic;
     }
@@ -109,27 +52,10 @@ public class Clinician extends User implements Serializable{
         this.assignedclinic = assignedclinic;     
     }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
     public ArrayList<String> getPreviousclinics() {
         return this.previousclinics;
     }
     public void setPreviousclinic(ArrayList<String> previousclinics) {
         this.previousclinics = previousclinics;   
     }
-
-    public void setIsactive(boolean isactive){
-        this.isactive = isactive;
-    }
-
-    public boolean getIsactive(){
-        return this.isactive;
-    }
-
-
-
-
-
 }

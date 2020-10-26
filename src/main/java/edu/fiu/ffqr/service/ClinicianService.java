@@ -1,7 +1,5 @@
 package edu.fiu.ffqr.service;
 
-import java.util.List;
-
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,10 +17,6 @@ public class ClinicianService  extends UserService<Clinician, ClinicianRepositor
 		this.repository = repository;
 	}
 
-	public List<Clinician> getAll()	{
-		return repository.findAll();
-	}
-	
 	public Clinician getClinicianByUsername(String username) {
 		return repository.findByUsername(username);
 	}
@@ -38,7 +32,7 @@ public class ClinicianService  extends UserService<Clinician, ClinicianRepositor
 	public Clinician getClinicianByAbbreviation(String abbreviation) {
 		return repository.getByAbbreviation(abbreviation);
 	}
-	
+
 	public void delete(String username) {
 		Clinician fi = repository.getByUserId(username);
 		repository.delete(fi);

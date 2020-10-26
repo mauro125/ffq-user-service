@@ -43,3 +43,4 @@ typings
 /.idea/
 /.settings/
 ffq-user-service.iml
+/bin/
