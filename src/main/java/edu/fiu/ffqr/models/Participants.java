@@ -12,8 +12,8 @@ import edu.fiu.ffqr.models.Clinician;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Document(collection="researcher_parents")
-public class ResearcherParent extends User implements Serializable{
+@Document(collection="participants")
+public class Participants extends User implements Serializable{
 
     @Id
     private ObjectId _id;
@@ -27,28 +27,28 @@ public class ResearcherParent extends User implements Serializable{
     private String firstname;
     @JsonProperty("lastname")
     private String lastname;
-    @JsonProperty("assignedResearcherOrg")
-    private String assignedResearcherOrg;
-    @JsonProperty("assignedResearcherUser")
-    private String assignedResearcherUser;    
+    @JsonProperty("assignedResearcherInst")
+    private String assignedResearcherInst;
+    @JsonProperty("assignedResearcherUsers")
+    private List<String> assignedResearcherUsers;    
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
     @JsonProperty("isactive")
     private boolean isactive;
 
-	public ResearcherParent() {}
+    public Participants() {}
 	
-    public ResearcherParent(String userId, String username, String userpassword, String usertype, 
-            String firstname, String lastname, String assignedResearcherOrg,
-            String assignedResearcherUser, ArrayList<String> childrennames, boolean isactive){
+    public Participants(String userId, String username, String userpassword, String usertype, 
+            String firstname, String lastname, String assignedResearcherInst,
+            List<String> assignedResearcherUsers, ArrayList<String> childrennames, boolean isactive){
         this.userId = userId;
 		this.username = username;
         this.userpassword = userpassword;
         this.usertype = usertype;
         this.firstname = firstname;
         this.lastname = lastname;
-        this.assignedResearcherOrg = assignedResearcherOrg;
-        this.assignedResearcherUser = assignedResearcherUser;
+        this.assignedResearcherInst = assignedResearcherInst;
+        this.assignedResearcherUsers = assignedResearcherUsers;
         this.childrennames = childrennames;
         this.isactive = isactive;
        
@@ -74,6 +74,7 @@ public class ResearcherParent extends User implements Serializable{
 	public String getUsername() {
 		return this.username;
     }
+        
 
     public String getUsertype(){
         return this.usertype;
@@ -97,19 +98,19 @@ public class ResearcherParent extends User implements Serializable{
     }
     
 
-    public String getAssignedResearcherOrg() {
-        return this.assignedResearcherOrg;
+    public String getAssignedResearcherInst() {
+        return this.assignedResearcherInst;
     }
-    public void setAssignedResearcherOrg(String assignedResearcherOrg) {
-        this.assignedResearcherOrg = assignedResearcherOrg;
+    public void setAssignedResearcherInst(String assignedResearcherOrg) {
+        this.assignedResearcherInst = assignedResearcherOrg;
             
     }
 
-    public String getAssignedResearcherUser() {
-        return this.assignedResearcherUser;
+    public List<String> getAssignedResearcherUser() {
+        return this.assignedResearcherUsers;
     }
-    public void setAssignedResearcherUser(String assignedResearcherUser) {
-        this.assignedResearcherUser = assignedResearcherUser;
+    public void setAssignedResearcherUser(List<String> assignedResearcherUser) {
+        this.assignedResearcherUsers = assignedResearcherUser;
             
     }
 
