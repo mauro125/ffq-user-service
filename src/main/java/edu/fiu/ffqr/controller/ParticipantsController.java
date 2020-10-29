@@ -20,57 +20,57 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import edu.fiu.ffqr.FFQUserApplication;
 import edu.fiu.ffqr.models.SysUser;
-import edu.fiu.ffqr.repositories.ResearcherParentRepository;
 import edu.fiu.ffqr.service.SysUserService;
 //import edu.fiu.ffqr.service.UserService;
-import edu.fiu.ffqr.models.ResearcherParent;
+import edu.fiu.ffqr.models.Participants;
 import edu.fiu.ffqr.service.ClinicianService;
-import edu.fiu.ffqr.service.ResearcherParentService;
+import edu.fiu.ffqr.service.ParticipantsService;
+import edu.fiu.ffqr.repositories.ParticipantsRepository;
 
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/researcher_parents")
-public class ResearcherParentController{
+@RequestMapping("/participants")
+public class ParticipantsController{
 
     @Autowired
-    private ResearcherParentService parentService;
+    private ParticipantsService participantsService;
     @Autowired
-    private ResearcherParentRepository parentRepository;
+    private ParticipantsRepository participantRepository;
 
-    public ResearcherParentController() {
+    public ParticipantsController() {
     }
     
     @GetMapping("/all")
-    public List<ResearcherParent> allResearcherParents() throws JsonProcessingException {
+    public List<Participants> allResearcherParents() throws JsonProcessingException {
         
-        List<ResearcherParent> users = parentService.getAll();
+        List<Participants> users = participantsService.getAll();
         return users;
     }  
 
     @GetMapping("/{userID}")
-	public ResearcherParent getParent(@PathVariable("userID") String userId) {
-		return parentService.getParentByUserId(userId);
+	public Participants getParent(@PathVariable("userID") String userId) {
+		return participantsService.getParticipantByUserId(userId);
 	}
     
-    @PostMapping("/createparent")
-    public ResearcherParent createUser(@RequestBody ResearcherParent user) throws JsonProcessingException {
+    @PostMapping("/createparticipants")
+    public Participants createUser(@RequestBody Participants user) throws JsonProcessingException {
 
-      if (parentService.getParentByUsername(user.getUsername()) != null) {
+      if (participantsService.getParticipantByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " already exists");
       }  
-	  return parentService.create(user);
+	  return participantsService.create(user);
 	  
   }
 
-  @PutMapping("/updateparent")
-    public void updateUser(@RequestBody ResearcherParent user) throws JsonProcessingException {
+  @PutMapping("/updateparticipants")
+    public void updateUser(@RequestBody Participants user) throws JsonProcessingException {
         
-        if (parentService.getParentByUserId(user.getUserId()) == null) {
+        if (participantsService.getParticipantByUserId(user.getUserId()) == null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
         }
 
-        ResearcherParent currentUser = parentService.getParentByUserId(user.getUserId());
+        Participants currentUser = participantsService.getParticipantByUserId(user.getUserId());
         
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
@@ -78,22 +78,22 @@ public class ResearcherParentController{
         currentUser.setLastname(user.getLastname());
         currentUser.setUsertype(user.getUsertype());
 
-        currentUser.setAssignedResearcherOrg(user.getAssignedResearcherOrg());
+        currentUser.setAssignedResearcherInst(user.getAssignedResearcherInst());
         currentUser.setAssignedResearcherUser(user.getAssignedResearcherUser()); 
         currentUser.setChildrennames(user.getChildrennames());            
 
-        parentRepository.save(currentUser);    
+        participantRepository.save(currentUser);    
     }
 
 
     @PostMapping("/create")
-    public ResearcherParent create(@RequestBody ResearcherParent item) throws JsonProcessingException {
+    public Participants create(@RequestBody Participants item) throws JsonProcessingException {
         
-        if (parentService.getParentByUsername(item.getUsername()) != null) {
-            throw new IllegalArgumentException("A parent with Username " + item.getUsername() + " already exists");
+        if (participantsService.getParticipantByUsername(item.getUsername()) != null) {
+            throw new IllegalArgumentException("A participant with Username " + item.getUsername() + " already exists");
         }
 
-        return parentService.create(item);
+        return participantsService.create(item);
     }
 
     
@@ -101,12 +101,12 @@ public class ResearcherParentController{
    
 	
 	@PostMapping("/createMany")
-	public ArrayList<ResearcherParent> create(@RequestBody ArrayList<ResearcherParent> users) {
-		ResearcherParent user = null;
+	public ArrayList<Participants> create(@RequestBody ArrayList<Participants> users) {
+		Participants user = null;
 		
-		for(ResearcherParent s : users)
+		for(Participants s : users)
 		{
-			user = parentService.create(s);
+			user = participantsService.create(s);
 		}
 		
 		return users;
@@ -116,7 +116,7 @@ public class ResearcherParentController{
 	  
 	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String userId) {
-        parentService.deleteById(userId);
+        participantsService.deleteById(userId);
 	  	  return "Deleted " + userId;
 	  }
 	

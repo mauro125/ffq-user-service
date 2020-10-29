@@ -6,6 +6,9 @@
     "usertype": "researcher",
     "firstname": "Cristina",
     "lastname": "Palacio",
+    "AssignedResearchInstitutionId":"1",
+    "LimitNumberOfParticipants":1000,
     "isactive": true
+   
   }
 ]
