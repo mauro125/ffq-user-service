@@ -1,5 +1,7 @@
 package edu.fiu.ffqr.repositories;
 
+import java.util.List;
+
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
@@ -14,10 +16,10 @@ public interface ParticipantsRepository extends MongoRepository<Participants, St
     Participants getUserBy_id(ObjectId _id);
 
     Participants getByUserId(String userId);
-	
+
     Participants findByUsername(String username);
 
-    Participants findByAssignedResearcherInst(String assignedResearcherInst);   
-   
-    
+    Participants findByAssignedResearcherInst(String assignedResearcherInst);
+
+    // List<Participants> findResaerParticipants(String researchId);
 }

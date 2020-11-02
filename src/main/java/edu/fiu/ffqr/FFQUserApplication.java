@@ -38,13 +38,13 @@ public class FFQUserApplication {
 			 * loader.loadAdmin(); loader.loadClinicians(); loader.loadParents();
 			 * 
 			 */
-			loader.loadResearcherParents();
+			loader.loadResearcherParticipants();
 			loader.loadResearch();
-                        loader.loadResearcherParticipants();
-                        loader.loadResearchInstitution();
-                        loader.loadResearch();
-                        loader.loadResearcherParticipants();
-                        loader.loadResearchInstitution();
+			loader.loadResearcherParticipants();
+			loader.loadResearchInstitution();
+			loader.loadResearch();
+			loader.loadResearcherParticipants();
+			loader.loadResearchInstitution();
 		}
 		// ======================================================================================
 

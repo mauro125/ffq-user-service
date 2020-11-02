@@ -21,14 +21,19 @@ public class ParticipantsService extends UserService<Participants, ParticipantsR
 		this.repository = repository;
 	}
 
-	public List<Participants> getAll()	{
+	public List<Participants> getAll() {
 		return repository.findAll();
 	}
-	
+
+	// We might not need this... Need to get all participants for a researcher
+	// public List<Participants> getResaerParticipants(String researchID) {
+	// return repository.findResaerParticipants(researchID);
+	// }
+
 	public Participants getParticipantByUsername(String username) {
 		return repository.findByUsername(username);
 	}
-	
+
 	public Participants getParticipantBy_id(ObjectId _id) {
 		return repository.getUserBy_id(_id);
 	}
@@ -39,9 +44,8 @@ public class ParticipantsService extends UserService<Participants, ParticipantsR
 
 	public Participants getParticipantByAssignedResearcher(String assignedResearcherInst) {
 		return repository.findByAssignedResearcherInst(assignedResearcherInst);
-	}       
-        
-	
+	}
+
 	public void delete(String userName) {
 		Participants fi = repository.findByUsername(userName);
 		repository.delete(fi);
@@ -51,5 +55,5 @@ public class ParticipantsService extends UserService<Participants, ParticipantsR
 		Participants fi = repository.getByUserId(userId);
 		repository.delete(fi);
 	}
-	
+
 }
