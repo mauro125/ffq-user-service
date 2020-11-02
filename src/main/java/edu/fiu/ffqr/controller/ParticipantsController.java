@@ -29,7 +29,7 @@ import edu.fiu.ffqr.repositories.ParticipantsRepository;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping("/participants")
+@RequestMapping("/participant")
 public class ParticipantsController {
 
     @Autowired
@@ -59,7 +59,7 @@ public class ParticipantsController {
         return participantsService.getParticipantByUserId(userId);
     }
 
-    @PostMapping("/createparticipants")
+    @PostMapping("/createparticipant")
     public Participants createUser(@RequestBody Participants user) throws JsonProcessingException {
 
         if (participantsService.getParticipantByUsername(user.getUsername()) != null) {
@@ -69,7 +69,7 @@ public class ParticipantsController {
 
     }
 
-    @PutMapping("/updateparticipants")
+    @PutMapping("/updateparticipant")
     public void updateUser(@RequestBody Participants user) throws JsonProcessingException {
 
         if (participantsService.getParticipantByUserId(user.getUserId()) == null) {
