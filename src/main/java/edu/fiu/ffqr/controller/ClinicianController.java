@@ -3,7 +3,6 @@ package edu.fiu.ffqr.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,11 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import edu.fiu.ffqr.FFQUserApplication;
 import edu.fiu.ffqr.models.Clinician;
-import edu.fiu.ffqr.models.SysUser;
 import edu.fiu.ffqr.repositories.ClinicianRepository;
-import edu.fiu.ffqr.service.SysUserService;
 //import edu.fiu.ffqr.service.UserService;
 import edu.fiu.ffqr.service.ClinicianService;
 
@@ -49,13 +45,13 @@ public class ClinicianController{
 
     @GetMapping("/{userID}")
 	public Clinician getClinician(@PathVariable("userID") String userId) {
-		return clinicianService.getClinicianByUserId(userId);
+		return clinicianService.getUserByUserIdNoPassword(userId);
 	}
     
     @PostMapping("/createclinician")
     public Clinician createUser(@RequestBody Clinician user) throws JsonProcessingException {
 
-      if (clinicianService.getClinicianByUsername(user.getUsername()) != null) {
+      if (clinicianService.getUserByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " already exists");
       }  
 	  return clinicianService.create(user);
@@ -65,11 +61,11 @@ public class ClinicianController{
     @PutMapping("/updateclinician")
     public void updateUser(@RequestBody Clinician user) throws JsonProcessingException {
         
-        if (clinicianService.getClinicianByUserId(user.getUserId()) == null) {
+        if (clinicianService.getUserByUserId(user.getUserId()) == null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
         }
 
-        Clinician currentUser = clinicianService.getClinicianByUserId(user.getUserId());
+        Clinician currentUser = clinicianService.getUserByUserId(user.getUserId());
 
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
@@ -88,7 +84,7 @@ public class ClinicianController{
     @PostMapping("/create")
     public Clinician create(@RequestBody Clinician item) throws JsonProcessingException {
         
-        if (clinicianService.getClinicianByUserId(item.getUsername()) != null) {
+        if (clinicianService.getUserByUserId(item.getUsername()) != null) {
             throw new IllegalArgumentException("A clinician with Username " + item.getUsername() + " already exists");
         }
 
@@ -110,7 +106,7 @@ public class ClinicianController{
 
 	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String userId) {
-        Clinician clinician = this.clinicianService.getClinicianByUserId(userId);
+        Clinician clinician = this.clinicianService.getUserByUserId(userId);
         clinicianService.deleteById(userId);
 	  	  return "Deleted " + userId;
 	  }
