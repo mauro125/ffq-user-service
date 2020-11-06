@@ -64,11 +64,16 @@ public class ClinicController{
 
   @PutMapping("/updateclinic")
     public Clinic updateClinic(@RequestBody Clinic clinic) throws JsonProcessingException {
-        
-        if (clinicService.getClinicByClinicId(clinic.getClinicId()) == null) {
-            throw new IllegalArgumentException("A clinic with the name " + clinic.getClinicId() + " doesn't exist");
-        }
-        return clinicRepository.save(clinic);
+      Clinic currentClinic = clinicService.getClinicByClinicId(clinic.getClinicId());
+      if (currentClinic == null) {
+          throw new IllegalArgumentException("A clinic with the name " + clinic.getClinicId() + " doesn't exist");
+      }
+      currentClinic.setAddress(clinic.getAddress());
+      currentClinic.setDatebuilt(clinic.getDatebuilt());
+      currentClinic.setClinicname(clinic.getClinicname());
+      currentClinic.setHeadclinician(clinic.getHeadclinician());
+      currentClinic.setIsactive(clinic.getIsactive());
+      return clinicRepository.save(currentClinic);
     }
 
 

@@ -45,13 +45,13 @@ public class ParentController{
 
     @GetMapping("/{userID}")
 	public Parent getParent(@PathVariable("userID") String userId) {
-		return parentService.getParentByUserId(userId);
+		return parentService.getUserByUserIdNoPassword(userId);
 	}
     
     @PostMapping("/createparent")
     public Parent createUser(@RequestBody Parent user) throws JsonProcessingException {
 
-      if (parentService.getParentByUsername(user.getUsername()) != null) {
+      if (parentService.getUserByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " already exists");
       }  
 	  return parentService.create(user);
@@ -61,11 +61,11 @@ public class ParentController{
   @PutMapping("/updateparent")
     public void updateUser(@RequestBody Parent user) throws JsonProcessingException {
         
-        if (parentService.getParentByUserId(user.getUserId()) == null) {
+        if (parentService.getUserByUserId(user.getUserId()) == null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
         }
 
-        Parent currentUser = parentService.getParentByUserId(user.getUserId());
+        Parent currentUser = parentService.getUserByUserId(user.getUserId());
         
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
@@ -83,7 +83,7 @@ public class ParentController{
     @PostMapping("/create")
     public Parent create(@RequestBody Parent item) throws JsonProcessingException {
         
-        if (parentService.getParentByUsername(item.getUsername()) != null) {
+        if (parentService.getUserByUsername(item.getUsername()) != null) {
             throw new IllegalArgumentException("A parent with Username " + item.getUsername() + " already exists");
         }
 
