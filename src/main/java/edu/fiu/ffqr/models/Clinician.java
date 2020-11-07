@@ -20,11 +20,13 @@ public class Clinician extends User implements Serializable{
     private String assignedclinic;
     @JsonProperty("previousclinics")
     private ArrayList<String> previousclinics = new ArrayList<String>();
+    @JsonProperty("parentLimitForClinician")
+    private int parentLimitForClinician;
 
 	public Clinician() {}
 	
-    public Clinician(String userId, String username, String abbreviation, String firstname, String lastname, String userpassword, String usertype, 
-                    String assignedclinic, ArrayList<String> previousclinics, boolean isactive){
+    public Clinician(String userId, String username, String abbreviation, String firstname, String lastname, String userpassword, String usertype,
+                    String assignedclinic, ArrayList<String> previousclinics, boolean isactive, int parentLimitForClinician){
         this.userId = userId;
 		this.username = username;
         this.userpassword = userpassword;
@@ -35,6 +37,7 @@ public class Clinician extends User implements Serializable{
         this.abbreviation = abbreviation;
         this.previousclinics = previousclinics;
         this.isactive = isactive;
+        this.parentLimitForClinician = parentLimitForClinician;
 
     }
 
@@ -57,5 +60,13 @@ public class Clinician extends User implements Serializable{
     }
     public void setPreviousclinic(ArrayList<String> previousclinics) {
         this.previousclinics = previousclinics;   
+    }
+
+    public int getParentLimitForClinician(){
+	    return this.parentLimitForClinician;
+    }
+
+    public void setParentLimitForClinician(int parentLimitForClinician) {
+	     this.parentLimitForClinician = parentLimitForClinician;
     }
 }
