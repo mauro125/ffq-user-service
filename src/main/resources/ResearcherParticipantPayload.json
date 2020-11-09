@@ -1,7 +1,64 @@
 [
-    {"userId": "1","username": "participant1", "userpassword": "participant1", "usertype": "participant", "firstname": "John", "lastname": "Doe", "assignedResearcherInst": "1", "assignedResearcherUser": ["Research1"], "childrennames": ["Sarah", "Tom"], "isactive": true},
-    {"userId": "2","username": "participant2", "userpassword": "participant2", "usertype": "participant", "firstname": "", "lastname": "", "assignedResearcherInst": "1", "assignedResearcherUser": ["Research1"], "childrennames": ["jacob"], "isactive": true},
-    {"userId": "3","username": "participant3", "userpassword": "participant3", "usertype": "participant", "firstname": "", "lastname": "", "assignedResearcherInst": "1", "assignedResearcherUser": ["Research1"], "childrennames": ["Abagail"], "isactive": true},
-    {"userId": "4","username": "participant4", "userpassword": "participant4", "usertype": "participant", "firstname": "Melissa", "lastname": "James", "assignedResearcherInst": "1", "assignedResearcherUser": ["Research1"], "childrennames": ["William", "Caroll"], "isactive": true}
-
-]
+    {
+       "userId":"1",
+       "username":"participant1",
+       "userpassword":"participant1",
+       "usertype":"participant",
+       "usercount":"1",
+       "assignedResearcherInst":"1",
+       "assignedResearcherUser":[
+          "Research1"
+       ],
+       "childrennames":[
+          "Sarah",
+          "Tom"
+       ],
+       "isactive":true
+    },
+    {
+       "userId":"2",
+       "username":"participant2",
+       "userpassword":"participant2",
+       "usertype":"participant",
+       "usercount":"2",
+       "assignedResearcherInst":"1",
+       "assignedResearcherUser":[
+          "Research1"
+       ],
+       "childrennames":[
+          "jacob"
+       ],
+       "isactive":true
+    },
+    {
+       "userId":"3",
+       "username":"participant3",
+       "userpassword":"participant3",
+       "usertype":"participant",
+       "usercount":"3",
+       "assignedResearcherInst":"1",
+       "assignedResearcherUser":[
+          "Research1"
+       ],
+       "childrennames":[
+          "Abagail"
+       ],
+       "isactive":true
+    },
+    {
+       "userId":"4",
+       "username":"participant4",
+       "userpassword":"participant4",
+       "usertype":"participant",
+       "usercount":"4",
+       "assignedResearcherInst":"1",
+       "assignedResearcherUser":[
+          "Research1"
+       ],
+       "childrennames":[
+          "William",
+          "Caroll"
+       ],
+       "isactive":true
+    }
+ ]

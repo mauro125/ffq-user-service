@@ -25,11 +25,6 @@ public class ParticipantsService extends UserService<Participants, ParticipantsR
 		return repository.findAll();
 	}
 
-	// We might not need this... Need to get all participants for a researcher
-	// public List<Participants> getResaerParticipants(String researchID) {
-	// return repository.findResaerParticipants(researchID);
-	// }
-
 	public Participants getParticipantByUsername(String username) {
 		return repository.findByUsername(username);
 	}
@@ -42,7 +37,7 @@ public class ParticipantsService extends UserService<Participants, ParticipantsR
 		return repository.getByUserId(userId);
 	}
 
-	public Participants getParticipantByAssignedResearcher(String assignedResearcherInst) {
+	public List<Participants> getParticipantByAssignedResearcher(String assignedResearcherInst) {
 		return repository.findByAssignedResearcherInst(assignedResearcherInst);
 	}
 

@@ -46,13 +46,11 @@ public class ParticipantsController {
         return users;
     }
 
-    // @GetMapping("/all/{userID}")
-    // public List<Participants> allResearcherParticipants(@PathVariable("userID")
-    // String researcherID) {
-    // List<Participants> users =
-    // participantsService.getResaerParticipants(researcherID);
-    // return users;
-    // }
+    @GetMapping("/all/{instID}")
+    public List<Participants> allResearcherParticipants(@PathVariable("instID") String instID) {
+        List<Participants> users = participantsService.getParticipantByAssignedResearcher(instID);
+        return users;
+    }
 
     @GetMapping("/{userID}")
     public Participants getParent(@PathVariable("userID") String userId) {
@@ -80,10 +78,8 @@ public class ParticipantsController {
 
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
-        currentUser.setFirstname(user.getFirstname());
-        currentUser.setLastname(user.getLastname());
         currentUser.setUsertype(user.getUsertype());
-
+        currentUser.setUserCount(user.getUserCount());
         currentUser.setAssignedResearcherInst(user.getAssignedResearcherInst());
         currentUser.setAssignedResearcherUser(user.getAssignedResearcherUser());
         currentUser.setChildrennames(user.getChildrennames());
@@ -101,16 +97,18 @@ public class ParticipantsController {
         return participantsService.create(item);
     }
 
-    @PostMapping("/createMany")
-    public ArrayList<Participants> create(@RequestBody ArrayList<Participants> users) {
-        Participants user = null;
+    // @GetMapping("/createMany")
+    // public ArrayList<Participants> create(@PathVariable("numberOfParents") String
+    // numberOfParents,
+    // @PathVariable("parentsPrefix") String parentsPrefix) {
+    // Participants user = null;
 
-        for (Participants s : users) {
-            user = participantsService.create(s);
-        }
+    // for (Participants s : users) {
+    // user = participantsService.create(s);
+    // }
 
-        return users;
-    }
+    // return users;
+    // }
 
     @DeleteMapping("/delete")
     public String delete(@RequestParam String userId) {

@@ -19,7 +19,5 @@ public interface ParticipantsRepository extends MongoRepository<Participants, St
 
     Participants findByUsername(String username);
 
-    Participants findByAssignedResearcherInst(String assignedResearcherInst);
-
-    // List<Participants> findResaerParticipants(String researchId);
+    List<Participants> findByAssignedResearcherInst(String assignedResearcherInst);
 }
