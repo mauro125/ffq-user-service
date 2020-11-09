@@ -76,6 +76,7 @@ public class ClinicianController{
         currentUser.setAbbreviation(user.getAbbreviation());
         currentUser.setAssignedclinic(user.getAssignedclinic());
         currentUser.setPreviousclinic(user.getPreviousclinics());
+        currentUser.setParentLimitForClinician(user.getParentLimitForClinician());
         clinicianRepository.save(currentUser);
    
     }
