@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import edu.fiu.ffqr.models.Participants;
-import edu.fiu.ffqr.models.Clinician;
+import edu.fiu.ffqr.models.ResearchInstitution;
 
 @Repository
 public interface ParticipantsRepository extends MongoRepository<Participants, String> {
