@@ -69,4 +69,18 @@ public abstract class UserService<U extends User, A extends UserRepository<U>> {
         U fi = repository.getByUserId(userId);
         repository.delete(fi);
     }
+
+    public U update(U currentUser, U updatedUser) {
+        currentUser.setUsername(updatedUser.getUsername());
+        currentUser.setFirstname(updatedUser.getFirstname());
+        currentUser.setLastname(updatedUser.getLastname());
+        currentUser.setUsertype(updatedUser.getUsertype());
+
+        currentUser.setUserpassword(
+                !updatedUser.getUserpassword().trim().isEmpty() ?
+                encodePassword(updatedUser.getUserpassword()) :
+                currentUser.getUserpassword()
+        );
+        return repository.save(currentUser);
+    }
 }
