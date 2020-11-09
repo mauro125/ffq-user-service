@@ -70,6 +70,7 @@ public class ClinicianController{
         currentUser.setAbbreviation(updatedUser.getAbbreviation());
         currentUser.setAssignedclinic(updatedUser.getAssignedclinic());
         currentUser.setPreviousclinic(updatedUser.getPreviousclinics());
+        currentUser.setParentLimitForClinician(updatedUser.getParentLimitForClinician());
 
         clinicianService.update(currentUser, updatedUser);
     }
