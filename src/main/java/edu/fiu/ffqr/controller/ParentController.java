@@ -67,17 +67,11 @@ public class ParentController{
 
         Parent currentUser = parentService.getUserByUserId(user.getUserId());
         
-        currentUser.setUsername(user.getUsername());
-        currentUser.setUserpassword(user.getUserpassword());
-        currentUser.setFirstname(user.getFirstname());
-        currentUser.setLastname(user.getLastname());
-        currentUser.setUsertype(user.getUsertype());
-
         currentUser.setAssignedclinic(user.getAssignedclinic());
         currentUser.setAssignedclinician(user.getAssignedclinician()); 
         currentUser.setChildrenNames(user.getChildrenNames());
 
-        parentRepository.save(currentUser);    
+        parentService.update(currentUser, user);
     }
 
     @PostMapping("/create")

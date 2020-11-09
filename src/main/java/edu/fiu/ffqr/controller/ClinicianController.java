@@ -59,26 +59,19 @@ public class ClinicianController{
   }
 
     @PutMapping("/updateclinician")
-    public void updateUser(@RequestBody Clinician user) throws JsonProcessingException {
+    public void updateUser(@RequestBody Clinician updatedUser) throws JsonProcessingException {
         
-        if (clinicianService.getUserByUserId(user.getUserId()) == null) {
-            throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
+        if (clinicianService.getUserByUserId(updatedUser.getUserId()) == null) {
+            throw new IllegalArgumentException("A user with Username " + updatedUser.getUsername() + " doesn't exist");
         }
 
-        Clinician currentUser = clinicianService.getUserByUserId(user.getUserId());
+        Clinician currentUser = clinicianService.getUserByUserId(updatedUser.getUserId());
 
-        currentUser.setUsername(user.getUsername());
-        currentUser.setUserpassword(user.getUserpassword());
-        currentUser.setFirstname(user.getFirstname());
-        currentUser.setLastname(user.getLastname());
-        currentUser.setUsertype(user.getUsertype());
+        currentUser.setAbbreviation(updatedUser.getAbbreviation());
+        currentUser.setAssignedclinic(updatedUser.getAssignedclinic());
+        currentUser.setPreviousclinic(updatedUser.getPreviousclinics());
 
-        currentUser.setAbbreviation(user.getAbbreviation());
-        currentUser.setAssignedclinic(user.getAssignedclinic());
-        currentUser.setPreviousclinic(user.getPreviousclinics());
-        currentUser.setParentLimitForClinician(user.getParentLimitForClinician());
-        clinicianRepository.save(currentUser);
-   
+        clinicianService.update(currentUser, updatedUser);
     }
 
 
