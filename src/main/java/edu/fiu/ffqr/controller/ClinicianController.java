@@ -71,6 +71,7 @@ public class ClinicianController{
         currentUser.setAssignedclinic(updatedUser.getAssignedclinic());
         currentUser.setPreviousclinic(updatedUser.getPreviousclinics());
         currentUser.setParentLimitForClinician(updatedUser.getParentLimitForClinician());
+        currentUser.setPrefix(updatedUser.getPrefix());
 
         clinicianService.update(currentUser, updatedUser);
     }
