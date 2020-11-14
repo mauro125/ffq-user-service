@@ -30,8 +30,8 @@ public class Researcher implements Serializable {
 	private String lastname;        
         @JsonProperty("AssignedResearchInstitutionId")      
 	private String AssignedResearchInstitutionId; 
-        @JsonProperty("LimitNumberOfParticipants")      
-	private Long limitNumberOfParticipants; 
+        @JsonProperty("limitNumberOfParticipants")      
+	private Number limitNumberOfParticipants; 
 	@JsonProperty("isactive")
         private boolean isactive;
 	
@@ -41,8 +41,8 @@ public class Researcher implements Serializable {
 	
 	public Researcher(String userId, String username, String userpassword, 
                 String usertype, String firstname, String lastname, boolean isactive,
-                String AssignedResearchInstitutionId, Long limitNumberOfParticipants){
-        this.userId = userId;
+                String AssignedResearchInstitutionId, Number limitNumberOfParticipants){
+                this.userId = userId;
 		this.username = username;
 		this.userpassword = userpassword;
 		this.usertype = usertype;
@@ -121,11 +121,11 @@ public class Researcher implements Serializable {
         return this.AssignedResearchInstitutionId;
     }
     
-    public void setLimitNumberOfParticipants(Long limitNumberOfParticipants){
+    public void setLimitNumberOfParticipants(Number limitNumberOfParticipants){
         this.limitNumberOfParticipants = limitNumberOfParticipants;
     }
 
-    public Long getLimitNumberOfParticipants(){
+    public Number getLimitNumberOfParticipants(){
         return this.limitNumberOfParticipants;
     }
 
