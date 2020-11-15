@@ -1,0 +1,14 @@
+[
+  {
+    "userId": "Research1",
+    "username": "research",
+    "userpassword": "research123",
+    "usertype": "researcher",
+    "firstname": "Cristina",
+    "lastname": "Palacio",
+    "AssignedResearchInstitutionId":"1",
+    "limitNumberOfParticipants":1000,
+    "isactive": true
+   
+  }
+]
