@@ -43,4 +43,7 @@ typings
 /.idea/
 /.settings/
 ffq-user-service.iml
-/bin/
+.project
+target/classes/edu/fiu/ffqr/FFQUserApplication.class
+target/classes/edu/fiu/ffqr/dataloader/DataLoader.class
+target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
