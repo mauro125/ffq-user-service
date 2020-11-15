@@ -15,14 +15,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Document(collection = "participants")
 public class Participants extends User implements Serializable {
 
-    @Id
-    private ObjectId _id;
-    @JsonProperty("userId")
-    private String userId;
-    @JsonProperty("username")
-    private String username;
-    @JsonProperty("usertype")
-    private String usertype;
     @JsonProperty("usercount")
     private String usercount;
     @JsonProperty("assignedResearcherInst")
@@ -31,8 +23,6 @@ public class Participants extends User implements Serializable {
     private List<String> assignedResearcherUsers;
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
-    @JsonProperty("isactive")
-    private boolean isactive;
 
     public Participants() {
     }
@@ -50,33 +40,6 @@ public class Participants extends User implements Serializable {
         this.childrennames = childrennames;
         this.isactive = isactive;
 
-    }
-
-    public ObjectId getId() {
-        return this._id;
-    }
-    /*
-     * public void setId(ObjectId id) { this._id = id; }
-     */
-
-    public String getUserId() {
-        return this.userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
-
-    public String getUsername() {
-        return this.username;
-    }
-
-    public String getUsertype() {
-        return this.usertype;
-    }
-
-    public void setUsertype(String usertype) {
-        this.usertype = usertype;
     }
 
     public String getUserCount() {
@@ -105,24 +68,12 @@ public class Participants extends User implements Serializable {
 
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public ArrayList<String> getChildrennames() {
         return this.childrennames;
     }
 
     public void setChildrennames(ArrayList<String> childrennames) {
         this.childrennames = childrennames;
-    }
-
-    public void setIsactive(boolean isactive) {
-        this.isactive = isactive;
-    }
-
-    public boolean getIsactive() {
-        return this.isactive;
     }
 
 }
