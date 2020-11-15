@@ -37,23 +37,19 @@ public class FFQUserApplication {
 			 * 
 			 * loader.loadAdmin(); loader.loadClinicians(); loader.loadParents();
 			 * 
-                        // loader.loadAdmin();
-                        // loader.loadClinicians();
-                        // loader.loadParents();
-                        // loader.loadClinics();			   			
-			   
 			 */
-			
+			loader.loadResearcherParticipants();
+			loader.loadResearch();			
 			loader.loadResearchInstitution();
-                        loader.loadResearch();
-                        loader.loadResearcherParticipants();
+			
 		}
 		// ======================================================================================
 
-		 
-		
-                
-                
+		// DataLoader loader = (DataLoader)ctx.getBean(DataLoader.class);
+		// loader.loadAdmin();
+		// loader.loadClinicians();
+		// loader.loadParents();
+		// loader.loadClinics();
 
 	}
 
