@@ -11,7 +11,7 @@ import edu.fiu.ffqr.models.Participants;
 import edu.fiu.ffqr.models.ResearchInstitution;
 
 @Repository
-public interface ParticipantsRepository extends MongoRepository<Participants, String> {
+public interface ParticipantsRepository extends UserRepository<Participants> {
 
     Participants getUserBy_id(ObjectId _id);
 
