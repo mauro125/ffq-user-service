@@ -61,10 +61,15 @@ public class ResearchInstitutionController {
     }  
 
     @GetMapping("/{institutionID}")
-	public ResearchInstitution gUserApplication(@PathVariable("institutionID") String userID) {
+	public ResearchInstitution getResearchInstitutionById(@PathVariable("institutionID") String userID) {
 		return researchService.getResearchInstitutionById(userID);
 	}
     
+         @GetMapping("/name/{institutionName}")
+	public ResearchInstitution getResearchInstitutionByName(@PathVariable("institutionName") String institutionName) {
+		return researchService.getUserByInstitutionName(institutionName);
+	}
+        
     @PostMapping("/createInstitution")
     public ResearchInstitution createUser(@RequestBody ResearchInstitution user) throws JsonProcessingException {
 
@@ -122,10 +127,10 @@ public class ResearchInstitutionController {
 	
 	  
 	  
-	  @DeleteMapping("/delete")
-	  public String delete(@RequestParam String userId) {
-        researchService.deleteById(userId);
-	  	  return "Deleted " + userId;
+	  @DeleteMapping("/delete/{researchInstitutionId}")
+	  public String delete(@RequestParam String researchInstitutionId) {
+        researchService.deleteById(researchInstitutionId);
+	  	  return "Deleted " + researchInstitutionId;
       }
 	
 }

@@ -7,7 +7,7 @@
     "firstname": "Cristina",
     "lastname": "Palacio",
     "AssignedResearchInstitutionId":"1",
-    "LimitNumberOfParticipants":1000,
+    "limitNumberOfParticipants":1000,
     "isactive": true
    
   }
