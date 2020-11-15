@@ -36,15 +36,12 @@ public class FFQUserApplication {
 			 * only what's needed
 			 * 
 			 * loader.loadAdmin(); loader.loadClinicians(); loader.loadParents();
-			 * 
+			 * loader.loadResearcherParticipants();
+			   loader.loadResearch();			
+			   loader.loadResearchInstitution();
 			 */
-			loader.loadResearcherParticipants();
-			loader.loadResearch();
-			loader.loadResearcherParticipants();
-			loader.loadResearchInstitution();
-			loader.loadResearch();
-			loader.loadResearcherParticipants();
-			loader.loadResearchInstitution();
+			
+			
 		}
 		// ======================================================================================
 
