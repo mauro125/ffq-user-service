@@ -26,12 +26,8 @@ public class Researcher implements Serializable {
         private String usertype;
 	@JsonProperty("firstname")
 	private String firstname;
-	@JsonProperty("lastname")      
-	private String lastname;        
-        @JsonProperty("AssignedResearchInstitutionId")      
-	private String AssignedResearchInstitutionId; 
-        @JsonProperty("limitNumberOfParticipants")      
-	private Number limitNumberOfParticipants; 
+	@JsonProperty("lastname")
+	private String lastname;
 	@JsonProperty("isactive")
         private boolean isactive;
 	
@@ -39,25 +35,24 @@ public class Researcher implements Serializable {
 
 	public Researcher() {}
 	
-	public Researcher(String userId, String username, String userpassword, 
-                String usertype, String firstname, String lastname, boolean isactive,
-                String AssignedResearchInstitutionId, Number limitNumberOfParticipants){
-                this.userId = userId;
+	public Researcher(String userId, String username, String userpassword, String usertype, String firstname, String lastname, boolean isactive){
+        this.userId = userId;
 		this.username = username;
 		this.userpassword = userpassword;
 		this.usertype = usertype;
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.isactive = isactive;
-                this.AssignedResearchInstitutionId = AssignedResearchInstitutionId;
-                this.limitNumberOfParticipants =limitNumberOfParticipants;
 
     }
 	
 
 	public ObjectId getId() {
-        return this._id;    }
-
+        return this._id;
+    }
+	/*public void setId(ObjectId id) {
+        this._id = id;
+	}*/
 	
 	public String getUserId() {
 		return this.userId;
@@ -112,22 +107,5 @@ public class Researcher implements Serializable {
     public boolean getIsactive(){
         return this.isactive;
     }
-    
-    public void setAssignedResearchInstitutionId(String AssignedResearchInstitutionId){
-        this.AssignedResearchInstitutionId = AssignedResearchInstitutionId;
-    }
 
-    public String getAssignedResearchInstitutionId(){
-        return this.AssignedResearchInstitutionId;
-    }
-    
-    public void setLimitNumberOfParticipants(Number limitNumberOfParticipants){
-        this.limitNumberOfParticipants = limitNumberOfParticipants;
-    }
-
-    public Number getLimitNumberOfParticipants(){
-        return this.limitNumberOfParticipants;
-    }
-
-    
 }
