@@ -7,3 +7,4 @@ import edu.fiu.ffqr.models.Parent;
 @Repository
 public interface ParentRepository extends UserRepository<Parent> {
 }
+
