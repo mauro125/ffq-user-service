@@ -275,6 +275,72 @@ public class DataLoader {
 
 	}
         
+//        public void loadResearchInstitution() {
+//		System.out.println("<------- Loading Research Institution... ------->");
+//
+//		this.researchInstitutionRepository.deleteAll();
+//
+//		try {
+//
+//			String resourceName = "ResearchInstitutionPayload.json";
+//
+//			ClassLoader classLoader = getClass().getClassLoader();
+//			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
+//			JSONParser jsonParser = new JSONParser();
+//			JSONArray jsonArray = (JSONArray) jsonParser.parse(new InputStreamReader(inputStream));
+//			ObjectMapper mapper = new ObjectMapper();
+//			List<ResearchInstitution> userList = new ArrayList<>();
+//
+//			for (Object object : jsonArray) {
+//				JSONObject jsonObject = (JSONObject) object;
+//				ResearchInstitution item = mapper.readValue(jsonObject.toString(), ResearchInstitution.class);
+//				userList.add(item);
+//			}
+//
+//			for (ResearchInstitution item : userList) {
+//				System.out.println(item.GetInstitutionName() + "---- Loaded!");
+//				this.researchInstitutionController.create(item);
+//			}
+//		} catch (Exception e) {
+//			System.err.println("An error occurred while loading Research Institution: ");
+//			e.printStackTrace();
+//		}
+//
+//	}
+//
+//	public void loadResearcherParticipants() {
+//		System.out.println("<------- Loading Researcher Participants... ------->");
+//
+//		this.researcherParentRepository.deleteAll();
+//
+//		try {
+//
+//			String resourceName = "ResearcherParticipantPayload.json";
+//
+//			ClassLoader classLoader = getClass().getClassLoader();
+//			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
+//			JSONParser jsonParser = new JSONParser();
+//			JSONArray jsonArray = (JSONArray) jsonParser.parse(new InputStreamReader(inputStream));
+//			ObjectMapper mapper = new ObjectMapper();
+//			List<Participants> parentList = new ArrayList<>();
+//
+//			for (Object object : jsonArray) {
+//				JSONObject jsonObject = (JSONObject) object;
+//				Participants item = mapper.readValue(jsonObject.toString(), Participants.class);
+//				parentList.add(item);
+//			}
+//
+//			for (Participants item : parentList) {
+//				System.out.println(item.getUsername() + "---- Loaded!");
+//				this.researcherParentController.create(item);
+//			}
+//		} catch (Exception e) {
+//			System.err.println("An error occurred while loading Participants: ");
+//			e.printStackTrace();
+//		}
+//
+//	}
+        
         
 	/*public void load() {
 		System.out.println("Loading fooditems...");
