@@ -74,6 +74,17 @@ public class ResearchController {
 	  return researchService.create(user);
 	  
   }
+    
+    @PostMapping("/create")
+    public Researcher create(@RequestBody Researcher item) throws JsonProcessingException {
+        
+        if (researchService.getUserByUsername(item.getUsername()) != null) {
+            throw new IllegalArgumentException("A user with Username " + item.getUsername() + " already exists");
+        }
+
+        return researchService.create(item);
+    }
+
 
   @PostMapping("/updateuser")
     public void updateUser(@RequestBody Researcher user) throws JsonProcessingException {
@@ -95,19 +106,6 @@ public class ResearchController {
         //return adminService.create(user);
     }
 
-
-    @PostMapping("/create")
-    public Researcher create(@RequestBody Researcher item) throws JsonProcessingException {
-        
-        if (researchService.getUserByUsername(item.getUsername()) != null) {
-            throw new IllegalArgumentException("A user with Username " + item.getUsername() + " already exists");
-        }
-
-        return researchService.create(item);
-    }
-
-    
-    
    
 	
 	@PostMapping("/createMany")
