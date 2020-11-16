@@ -17,15 +17,16 @@ public class Parent extends User implements Serializable{
 
     @JsonProperty("assignedclinic")
     private String assignedclinic;
-	@JsonProperty("assignedclinician")
-    private String assignedclinician;
+    @JsonProperty("assignedclinician")
+    private String assignedclinician;    
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
 
 	public Parent() {}
 	
-    public Parent(String userId, String username, String userpassword, String usertype, String firstname, String lastname, String assignedclinic,
-    String assignedclinician, ArrayList<String> childrennames, boolean isactive){
+    public Parent(String userId, String username, String userpassword, String usertype, 
+            String firstname, String lastname, String assignedclinic,
+            String assignedclinician, ArrayList<String> childrennames, boolean isactive){
         this.userId = userId;
 		this.username = username;
         this.userpassword = userpassword;
@@ -36,6 +37,7 @@ public class Parent extends User implements Serializable{
         this.assignedclinician = assignedclinician;
         this.childrennames = childrennames;
         this.isactive = isactive;
+
     }
 
     public String getAssignedclinic() {
@@ -51,6 +53,7 @@ public class Parent extends User implements Serializable{
     public void setAssignedclinician(String assignedclinician) {
         this.assignedclinician = assignedclinician;
     }
+
 
     public ArrayList<String> getChildrenNames() {
         return this.childrennames;
