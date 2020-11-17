@@ -14,34 +14,30 @@ public abstract class UserService<U extends User, A extends UserRepository<U>> {
 
     protected String encodePassword(String userpassword) {
         int strength = 10; // work factor of bcrypt
-        BCryptPasswordEncoder bCryptPasswordEncoder =
-                new BCryptPasswordEncoder(strength, new SecureRandom());
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder(strength, new SecureRandom());
         return bCryptPasswordEncoder.encode(userpassword);
     }
 
-    public List<U> getAll()	{
+    public List<U> getAll() {
         return repository.findAll();
     }
 
     public String getNextId() {
-        return String.valueOf(getAll().stream()
-                .map(User::getUserId)
-                .map(Integer::parseInt)
-                .max(Integer::compare)
-                .orElse(0)
-                + 1);
+        return String.valueOf(
+                getAll().stream().map(User::getUserId).map(Integer::parseInt).max(Integer::compare).orElse(0) + 1);
     }
 
     public U create(U user) {
         U updatedUser = user;
-        if (user.getUserId().isEmpty()){
+        if (user.getUserId().isEmpty()) {
             updatedUser.setUserId(this.getNextId());
         }
-        if (user.getUsername().isEmpty()){
+        if (user.getUsername().isEmpty()) {
             updatedUser.setUsername(user.getUsertype() + this.getNextId());
             updatedUser.setUserpassword(user.getUsertype() + this.getNextId());
         }
-        String encodedPassword = encodePassword(updatedUser.getUserpassword());
+        String encodedPassword = (updatedUser.getUsertype().equals("participant")) ? updatedUser.getUserpassword()
+                : encodePassword(updatedUser.getUserpassword());
         updatedUser.setUserpassword(encodedPassword);
         return this.repository.save(updatedUser);
     }
@@ -77,10 +73,8 @@ public abstract class UserService<U extends User, A extends UserRepository<U>> {
         currentUser.setUsertype(updatedUser.getUsertype());
 
         currentUser.setUserpassword(
-                !updatedUser.getUserpassword().trim().isEmpty() ?
-                encodePassword(updatedUser.getUserpassword()) :
-                currentUser.getUserpassword()
-        );
+                !updatedUser.getUserpassword().trim().isEmpty() ? encodePassword(updatedUser.getUserpassword())
+                        : currentUser.getUserpassword());
         return repository.save(currentUser);
     }
 }

@@ -1,10 +1,11 @@
 [
     {
        "userId":"1",
-       "username":"participant1",
-       "userpassword":"participant1",
+       "username":"FIU Research_1",
+       "userpassword":"2671hkth9k",
        "usertype":"participant",
-       "usercount":"1",
+       "firstname":"",
+       "lastname":"",
        "assignedResearcherInst":"1",
        "assignedResearcherUser":[
           "Research1"
@@ -17,10 +18,11 @@
     },
     {
        "userId":"2",
-       "username":"participant2",
-       "userpassword":"participant2",
+       "username":"FIU Research_2",
+       "userpassword":"15frn7absr",
        "usertype":"participant",
-       "usercount":"2",
+       "firstname":"",
+       "lastname":"",
        "assignedResearcherInst":"1",
        "assignedResearcherUser":[
           "Research1"
@@ -32,10 +34,11 @@
     },
     {
        "userId":"3",
-       "username":"participant3",
-       "userpassword":"participant3",
+       "username":"FIU Research_3",
+       "userpassword":"35adfw67oh",
        "usertype":"participant",
-       "usercount":"3",
+       "firstname":"",
+       "lastname":"",
        "assignedResearcherInst":"1",
        "assignedResearcherUser":[
           "Research1"
@@ -47,10 +50,11 @@
     },
     {
        "userId":"4",
-       "username":"participant4",
-       "userpassword":"participant4",
+       "username":"FIU Research_4",
+       "userpassword":"3h57302fgj",
        "usertype":"participant",
-       "usercount":"4",
+       "firstname":"",
+       "lastname":"",
        "assignedResearcherInst":"1",
        "assignedResearcherUser":[
           "Research1"

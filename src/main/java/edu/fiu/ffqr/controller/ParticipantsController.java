@@ -22,8 +22,7 @@ import edu.fiu.ffqr.FFQUserApplication;
 import edu.fiu.ffqr.models.SysUser;
 import edu.fiu.ffqr.service.SysUserService;
 //import edu.fiu.ffqr.service.UserService;
-import edu.fiu.ffqr.models.Participants;
-import edu.fiu.ffqr.service.ClinicianService;
+import edu.fiu.ffqr.models.Participant;
 import edu.fiu.ffqr.service.ParticipantsService;
 import edu.fiu.ffqr.repositories.ParticipantsRepository;
 
@@ -41,26 +40,26 @@ public class ParticipantsController {
     }
 
     @GetMapping("/all")
-    public List<Participants> allResearcherParents() throws JsonProcessingException {
-        List<Participants> users = participantsService.getAll();
+    public List<Participant> allParticipants() throws JsonProcessingException {
+        List<Participant> users = participantsService.getAll();
         return users;
     }
 
     @GetMapping("/all/{instID}")
-    public List<Participants> allResearcherParticipants(@PathVariable("instID") String instID) {
-        List<Participants> users = participantsService.getParticipantByAssignedResearcher(instID);
+    public List<Participant> allResearcherParticipants(@PathVariable("instID") String instID) {
+        List<Participant> users = participantsService.getParticipantByAssignedInstitution(instID);
         return users;
     }
 
     @GetMapping("/{userID}")
-    public Participants getParent(@PathVariable("userID") String userId) {
-        return participantsService.getParticipantByUserId(userId);
+    public Participant getParticipant(@PathVariable("userID") String userId) {
+        return participantsService.getUserByUserIdNoPassword(userId);
     }
 
     @PostMapping("/createparticipant")
-    public Participants createUser(@RequestBody Participants user) throws JsonProcessingException {
+    public Participant createUser(@RequestBody Participant user) throws JsonProcessingException {
 
-        if (participantsService.getParticipantByUsername(user.getUsername()) != null) {
+        if (participantsService.getUserByUsername(user.getUsername()) != null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " already exists");
         }
         return participantsService.create(user);
@@ -68,52 +67,45 @@ public class ParticipantsController {
     }
 
     @PutMapping("/updateparticipant")
-    public void updateUser(@RequestBody Participants user) throws JsonProcessingException {
+    public void updateUser(@RequestBody Participant user) throws JsonProcessingException {
 
-        if (participantsService.getParticipantByUserId(user.getUserId()) == null) {
+        if (participantsService.getUserByUserId(user.getUserId()) == null) {
             throw new IllegalArgumentException("A user with Username " + user.getUsername() + " doesn't exist");
         }
 
-        Participants currentUser = participantsService.getParticipantByUserId(user.getUserId());
+        Participant currentUser = participantsService.getUserByUserId(user.getUserId());
 
-        currentUser.setUsername(user.getUsername());
-        currentUser.setUserpassword(user.getUserpassword());
-        currentUser.setUsertype(user.getUsertype());
-        currentUser.setUserCount(user.getUserCount());
         currentUser.setAssignedResearcherInst(user.getAssignedResearcherInst());
         currentUser.setAssignedResearcherUser(user.getAssignedResearcherUser());
         currentUser.setChildrennames(user.getChildrennames());
 
-        participantRepository.save(currentUser);
+        participantsService.update(currentUser, user);
     }
 
     @PostMapping("/create")
-    public Participants create(@RequestBody Participants item) throws JsonProcessingException {
+    public Participant create(@RequestBody Participant item) throws JsonProcessingException {
 
-        if (participantsService.getParticipantByUsername(item.getUsername()) != null) {
+        if (participantsService.getUserByUsername(item.getUsername()) != null) {
             throw new IllegalArgumentException("A participant with Username " + item.getUsername() + " already exists");
         }
 
         return participantsService.create(item);
     }
 
-    // @GetMapping("/createMany")
-    // public ArrayList<Participants> create(@PathVariable("numberOfParents") String
-    // numberOfParents,
-    // @PathVariable("parentsPrefix") String parentsPrefix) {
-    // Participants user = null;
+    @PostMapping("/createManyParticipants")
+    public ArrayList<Participant> create(@RequestBody ArrayList<Participant> users) {
+        Participant user = null;
 
-    // for (Participants s : users) {
-    // user = participantsService.create(s);
-    // }
+        for (Participant s : users) {
+            user = participantsService.create(s);
+        }
 
-    // return users;
-    // }
+        return users;
+    }
 
     @DeleteMapping("/delete")
     public String delete(@RequestParam String userId) {
         participantsService.deleteById(userId);
         return "Deleted " + userId;
     }
-
 }

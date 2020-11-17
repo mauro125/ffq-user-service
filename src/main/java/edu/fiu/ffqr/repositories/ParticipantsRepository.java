@@ -2,22 +2,12 @@ package edu.fiu.ffqr.repositories;
 
 import java.util.List;
 
-import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import edu.fiu.ffqr.models.Participants;
-import edu.fiu.ffqr.models.ResearchInstitution;
+import edu.fiu.ffqr.models.Participant;
 
 @Repository
-public interface ParticipantsRepository extends UserRepository<Participants> {
+public interface ParticipantsRepository extends UserRepository<Participant> {
 
-    Participants getUserBy_id(ObjectId _id);
-
-    Participants getByUserId(String userId);
-
-    Participants findByUsername(String username);
-
-    List<Participants> findByAssignedResearcherInst(String assignedResearcherInst);
+    List<Participant> findByAssignedResearcherInst(String assignedResearcherInst);
 }
