@@ -8,15 +8,13 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import edu.fiu.ffqr.models.Clinician;
+import edu.fiu.ffqr.models.Researcher;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Document(collection = "participants")
-public class Participants extends User implements Serializable {
+public class Participant extends User implements Serializable {
 
-    @JsonProperty("usercount")
-    private String usercount;
     @JsonProperty("assignedResearcherInst")
     private String assignedResearcherInst;
     @JsonProperty("assignedResearcherUsers")
@@ -24,30 +22,23 @@ public class Participants extends User implements Serializable {
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
 
-    public Participants() {
+    public Participant() {
     }
 
-    public Participants(String userId, String username, String userpassword, String usertype, String usercount,
+    public Participant(String userId, String username, String userpassword, String usertype,
             String assignedResearcherInst, List<String> assignedResearcherUsers, ArrayList<String> childrennames,
             boolean isactive) {
         this.userId = userId;
         this.username = username;
         this.userpassword = userpassword;
         this.usertype = usertype;
-        this.usercount = usercount;
+        this.firstname = "";
+        this.lastname = "";
         this.assignedResearcherInst = assignedResearcherInst;
         this.assignedResearcherUsers = assignedResearcherUsers;
         this.childrennames = childrennames;
         this.isactive = isactive;
 
-    }
-
-    public String getUserCount() {
-        return this.usercount;
-    }
-
-    public void setUserCount(String usercount) {
-        this.usercount = usercount;
     }
 
     public String getAssignedResearcherInst() {
