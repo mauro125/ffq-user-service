@@ -26,6 +26,7 @@ import edu.fiu.ffqr.models.Authenticate;
 import edu.fiu.ffqr.models.SysUser;
 import edu.fiu.ffqr.repositories.AdminRepository;
 import edu.fiu.ffqr.models.Admin;
+import edu.fiu.ffqr.models.Clinician;
 import edu.fiu.ffqr.models.ResearchInstitution;
 import edu.fiu.ffqr.repositories.ResearchInstitutionRepository;
 import edu.fiu.ffqr.service.SysUserService;
@@ -80,24 +81,24 @@ public class ResearchInstitutionController {
 	  
   }
 
-  @PostMapping("/updateinstitution")
-    public void updateUser(@RequestBody ResearchInstitution user) throws JsonProcessingException {
+  @PutMapping("/updateinstitution")
+    public void updateUser(@RequestBody ResearchInstitution updatedUser) throws JsonProcessingException {
         
-        if (researchService.getResearchInstitutionById(user.getResearchInstitutionId()) == null) {
-            throw new IllegalArgumentException("A research Institution with name " + user.GetInstitutionName()+ " doesn't exist");
+        if (researchService.getResearchInstitutionById(updatedUser.getResearchInstitutionId()) == null) {
+            throw new IllegalArgumentException("A research Institution with name " + updatedUser.GetInstitutionName()+ " doesn't exist");
         }
 
-        ResearchInstitution currentUser = researchService.getResearchInstitutionById(user.getResearchInstitutionId());
+        ResearchInstitution currentUser = researchService.getResearchInstitutionById(updatedUser.getResearchInstitutionId());
 
-        currentUser.setAddress(user.getAddress());
-        currentUser.setCreatedDate(user.getCreatedDate());
-        currentUser.setInstitutionName(user.GetInstitutionName());
-        currentUser.setSiteType(user.getSiteType());
+        currentUser.setAddress(updatedUser.getAddress());
+        currentUser.setCreatedDate(updatedUser.getCreatedDate());
+        currentUser.setInstitutionName(updatedUser.GetInstitutionName());
+        currentUser.setSiteType(updatedUser.getSiteType());
 
         researchRepository.save(currentUser);
        
     }
-
+    
 
     @PostMapping("/create")
     public ResearchInstitution create(@RequestBody ResearchInstitution item) throws JsonProcessingException {
@@ -127,7 +128,7 @@ public class ResearchInstitutionController {
 	
 	  
 	  
-	  @DeleteMapping("/delete/{researchInstitutionId}")
+	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String researchInstitutionId) {
         researchService.deleteById(researchInstitutionId);
 	  	  return "Deleted " + researchInstitutionId;

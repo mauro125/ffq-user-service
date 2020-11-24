@@ -86,7 +86,7 @@ public class ResearchController {
     }
 
 
-  @PostMapping("/updateuser")
+  @PutMapping("/updateuser")
     public void updateUser(@RequestBody Researcher user) throws JsonProcessingException {
         
         if (researchService.getUserByUserId(user.getUserId()) == null) {
@@ -98,8 +98,9 @@ public class ResearchController {
         currentUser.setUsername(user.getUsername());
         currentUser.setUserpassword(user.getUserpassword());
         currentUser.setFirstname(user.getFirstname());
-        currentUser.setLastname(user.getLastname());
-        currentUser.setUsertype(user.getUsertype());
+        currentUser.setLastname(user.getLastname());        
+        currentUser.setAssignedResearchInstitutionId(user.getAssignedResearchInstitutionId());
+        currentUser.setLimitNumberOfParticipants(user.getLimitNumberOfParticipants());
 
         researchRepository.save(currentUser);
 
