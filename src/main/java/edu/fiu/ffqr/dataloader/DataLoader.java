@@ -221,7 +221,7 @@ public class DataLoader {
 
 		try {
 
-			String resourceName = "ClinicPayLoad.json";
+			String resourceName = "ClinicPayload.json";
 
 			ClassLoader classLoader = getClass().getClassLoader();
 			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
