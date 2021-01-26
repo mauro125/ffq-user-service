@@ -101,6 +101,7 @@ public class ResearchController {
         currentUser.setLastname(user.getLastname());        
         currentUser.setAssignedResearchInstitutionId(user.getAssignedResearchInstitutionId());
         currentUser.setLimitNumberOfParticipants(user.getLimitNumberOfParticipants());
+        currentUser.setPrefix(user.getPrefix());
 
         researchRepository.save(currentUser);
 

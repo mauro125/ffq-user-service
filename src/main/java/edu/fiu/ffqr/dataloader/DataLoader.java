@@ -155,7 +155,7 @@ public class DataLoader {
 
 		try {
 
-			String resourceName = "ClinicianPayload.json";
+			String resourceName = "ClinicianPayLoad.json";
 
 			ClassLoader classLoader = getClass().getClassLoader();
 			InputStream inputStream = classLoader.getResourceAsStream(resourceName);
@@ -188,7 +188,7 @@ public class DataLoader {
 
 		try {
 
-			String resourceName = "ParentPayload.json";
+			String resourceName = "ParentPayLoad.json";
 
 			ClassLoader classLoader = getClass().getClassLoader();
 			InputStream inputStream = classLoader.getResourceAsStream(resourceName);

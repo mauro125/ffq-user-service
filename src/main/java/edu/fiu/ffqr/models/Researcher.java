@@ -34,14 +34,15 @@ public class Researcher implements Serializable {
 	private Number limitNumberOfParticipants; 
 	@JsonProperty("isactive")
         private boolean isactive;
-	
+	@JsonProperty("prefix")
+	private String prefix;
 
 
 	public Researcher() {}
 	
 	public Researcher(String userId, String username, String userpassword, 
                 String usertype, String firstname, String lastname, boolean isactive,
-                String AssignedResearchInstitutionId, Number limitNumberOfParticipants){
+                String AssignedResearchInstitutionId, Number limitNumberOfParticipants, String prefix){
                 this.userId = userId;
 		this.username = username;
 		this.userpassword = userpassword;
@@ -51,6 +52,7 @@ public class Researcher implements Serializable {
 		this.isactive = isactive;
                 this.AssignedResearchInstitutionId = AssignedResearchInstitutionId;
                 this.limitNumberOfParticipants =limitNumberOfParticipants;
+                this.prefix = prefix;
 
     }
 	
@@ -65,6 +67,14 @@ public class Researcher implements Serializable {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public String getPrefix() {
+		return this.prefix;
+	}
+
+	public void setPrefix(String prefix) {
+		this.prefix = prefix;
 	}
 
 	public String getUsername() {
