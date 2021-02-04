@@ -70,6 +70,7 @@ public class ParentController{
         currentUser.setAssignedclinic(user.getAssignedclinic());
         currentUser.setAssignedclinician(user.getAssignedclinician()); 
         currentUser.setChildrenNames(user.getChildrenNames());
+        currentUser.setPrefix(user.getPrefix());
 
         parentService.update(currentUser, user);
     }
