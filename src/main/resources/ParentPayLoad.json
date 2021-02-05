@@ -1,7 +1,7 @@
 [
     {
         "userId": "1",
-        "username": "parent1",
+        "username": "Borinquen_1",
         "userpassword": "parent1",
         "usertype": "parent",
         "firstname": "John",
@@ -10,12 +10,12 @@
         "assignedclinician": "1",
         "childrennames": ["Sarah", "Tom"],
         "isactive": true,
-        "prefix": "prefixTest"
+        "prefix": "Borinquen"
     },
     {
         "userId": "2",
-        "username": "parent2",
-        "userpassword": "parent2",
+        "username": "Borinquen_2",
+        "userpassword": "parent1",
         "usertype": "parent",
         "firstname": "",
         "lastname": "",
@@ -23,12 +23,12 @@
         "assignedclinician": "1",
         "childrennames": ["jacob"],
         "isactive": true,
-        "prefix": "prefixTest"
+        "prefix": "Borinquen"
     },
     {
         "userId": "3",
-        "username": "parent3",
-        "userpassword": "parent3",
+        "username": "FIU_1",
+        "userpassword": "parent1",
         "usertype": "parent",
         "firstname": "",
         "lastname": "",
@@ -36,12 +36,12 @@
         "assignedclinician": "2",
         "childrennames": ["Abagail"],
         "isactive": true,
-        "prefix": "FIUTest"
+        "prefix": "FIU"
     },
     {
         "userId": "4",
-        "username": "millyj",
-        "userpassword": "admin123",
+        "username": "FIU_2",
+        "userpassword": "parent1",
         "usertype": "parent",
         "firstname": "Melissa",
         "lastname": "James",
@@ -49,6 +49,6 @@
         "assignedclinician": "2",
         "childrennames": ["William", "Caroll"],
         "isactive": true,
-        "prefix": "FIUTest"
+        "prefix": "FIU"
     }
 ]
