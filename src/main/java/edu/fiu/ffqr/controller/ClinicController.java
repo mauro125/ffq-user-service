@@ -3,6 +3,9 @@ package edu.fiu.ffqr.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import edu.fiu.ffqr.service.ClinicianService;
+import edu.fiu.ffqr.service.ParentService;
+import edu.fiu.ffqr.service.ResultsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,6 +32,12 @@ public class ClinicController{
 
     @Autowired
     private ClinicService clinicService;
+    @Autowired
+    private ClinicianService clinicianService;
+    @Autowired
+    private ParentService parentService;
+    @Autowired
+    private ResultsService resultsService;
     @Autowired
     private ClinicRepository clinicRepository;
 
@@ -101,7 +110,17 @@ public class ClinicController{
 
 	  @DeleteMapping("/delete")
 	  public String delete(@RequestParam String clinicId) {
-        clinicService.deleteById(clinicId);
+          clinicianService.findAllByAssignedClinic(clinicId)
+                  .forEach(clinician -> {
+                            parentService.findAllByAssignedclinician(clinician.getUserId())
+                            .forEach(parent ->
+                                    resultsService.deleteResultsByUserId(parent.getUserId())
+                                    );
+                            parentService.deleteByAssignedclinician(clinician.getUserId());
+                        }
+                  );
+                            clinicianService.findAllByAssignedClinic(clinicId);
+          clinicService.deleteById(clinicId);
 	  	  return "Deleted " + clinicId;
 	  }
 	

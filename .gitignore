@@ -45,3 +45,6 @@ typings
 ffq-user-service.iml
 /bin/
 /vpproject/
+*.iml
+.classpath
+.project

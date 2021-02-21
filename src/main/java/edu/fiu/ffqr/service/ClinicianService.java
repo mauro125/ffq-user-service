@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import edu.fiu.ffqr.models.Clinician;
 import edu.fiu.ffqr.repositories.ClinicianRepository;
 
+import java.util.List;
+
 @Service
 @Component
 public class ClinicianService  extends UserService<Clinician, ClinicianRepository> {
@@ -15,5 +17,9 @@ public class ClinicianService  extends UserService<Clinician, ClinicianRepositor
 	public ClinicianService(ClinicianRepository repository) {
 		this.repository = repository;
 	}
+
+	public List<Clinician> findAllByAssignedClinic(String assignedclinic) {
+		return this.repository.findAllByAssignedclinic(assignedclinic);
+	};
 
 }
