@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import edu.fiu.ffqr.repositories.ParentRepository;
 import edu.fiu.ffqr.models.Parent;
 
+import java.util.List;
+
 @Service
 @Component
 public class ParentService extends UserService<Parent, ParentRepository> {
@@ -16,4 +18,11 @@ public class ParentService extends UserService<Parent, ParentRepository> {
 		this.repository = repository;
 	}
 
+	public List<Parent> findAllByAssignedclinician(String assignedclinician) {
+		return this.repository.findAllByAssignedclinician(assignedclinician);
+	}
+
+	public void deleteByAssignedclinician(String assignedclinician) {
+		this.repository.deleteAllByAssignedclinician(assignedclinician);
+	}
 }
