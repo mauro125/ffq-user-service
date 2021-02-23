@@ -78,6 +78,7 @@ public class ParticipantsController {
         currentUser.setAssignedResearcherInst(user.getAssignedResearcherInst());
         currentUser.setAssignedResearcherUser(user.getAssignedResearcherUser());
         currentUser.setChildrennames(user.getChildrennames());
+        currentUser.setPrefix(user.getPrefix());
 
         participantsService.update(currentUser, user);
     }
