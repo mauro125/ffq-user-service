@@ -21,13 +21,17 @@ public class Participant extends User implements Serializable {
     private List<String> assignedResearcherUsers;
     @JsonProperty("childrennames")
     private ArrayList<String> childrennames = new ArrayList<String>();
+	@JsonProperty("prefix")
+    private String prefix;
+
+
 
     public Participant() {
     }
 
     public Participant(String userId, String username, String userpassword, String usertype,
             String assignedResearcherInst, List<String> assignedResearcherUsers, ArrayList<String> childrennames,
-            boolean isactive) {
+            boolean isactive, String prefix) {
         this.userId = userId;
         this.username = username;
         this.userpassword = userpassword;
@@ -38,6 +42,7 @@ public class Participant extends User implements Serializable {
         this.assignedResearcherUsers = assignedResearcherUsers;
         this.childrennames = childrennames;
         this.isactive = isactive;
+		this.prefix = prefix;
 
     }
 
@@ -67,4 +72,10 @@ public class Participant extends User implements Serializable {
         this.childrennames = childrennames;
     }
 
+	public String getPrefix() {
+        return this.prefix;
+    }
+    public void setPrefix(String prefix) {
+        this.prefix = prefix;
+    }
 }
