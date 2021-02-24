@@ -119,7 +119,7 @@ public class ClinicController{
                             parentService.deleteByAssignedclinician(clinician.getUserId());
                         }
                   );
-                            clinicianService.findAllByAssignedClinic(clinicId);
+                            clinicianService.deleteAllByAssignedClinic(clinicId);
           clinicService.deleteById(clinicId);
 	  	  return "Deleted " + clinicId;
 	  }
