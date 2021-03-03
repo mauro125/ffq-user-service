@@ -1,7 +1,7 @@
 [
   {
     "userId": "1",
-    "username": "researcher1",
+    "username": "FIU_Reresearcher1",
     "userpassword": "researcher1",
     "usertype": "researcher",
     "firstname": "Cristina",
@@ -9,7 +9,7 @@
     "AssignedResearchInstitutionId":"1",
     "limitNumberOfParticipants":1000,
     "isactive": true,
-    "prefix": "preFixTest"
+    "prefix": "FIU"
    
   }
 ]
