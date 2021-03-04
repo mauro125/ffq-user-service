@@ -82,6 +82,7 @@ public class ClinicController{
       currentClinic.setClinicname(clinic.getClinicname());
       currentClinic.setHeadclinician(clinic.getHeadclinician());
       currentClinic.setIsactive(clinic.getIsactive());
+      currentClinic.setParentsLimit(clinic.getParentsLimit());
       return clinicRepository.save(currentClinic);
     }
 
