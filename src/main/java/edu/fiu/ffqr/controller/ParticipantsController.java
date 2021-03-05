@@ -3,7 +3,6 @@ package edu.fiu.ffqr.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,9 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
-import edu.fiu.ffqr.FFQUserApplication;
-import edu.fiu.ffqr.models.SysUser;
-import edu.fiu.ffqr.service.SysUserService;
 //import edu.fiu.ffqr.service.UserService;
 import edu.fiu.ffqr.models.Participant;
 import edu.fiu.ffqr.service.ParticipantsService;
@@ -47,7 +43,7 @@ public class ParticipantsController {
 
     @GetMapping("/all/{instID}")
     public List<Participant> allResearcherParticipants(@PathVariable("instID") String instID) {
-        List<Participant> users = participantsService.getParticipantByAssignedInstitution(instID);
+        List<Participant> users = participantsService.findAllByAssignedResearcherInst(instID);
         return users;
     }
 

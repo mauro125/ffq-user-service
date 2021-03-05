@@ -6,7 +6,7 @@
     "usertype": "researcher",
     "firstname": "Cristina",
     "lastname": "Palacio",
-    "AssignedResearchInstitutionId":"1",
+    "assignedResearchInstitutionId":"1",
     "limitNumberOfParticipants":1000,
     "isactive": true,
     "prefix": "FIU"
