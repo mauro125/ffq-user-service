@@ -92,6 +92,7 @@ public class ResearchInstitutionController {
         currentUser.setCreatedDate(updatedUser.getCreatedDate());
         currentUser.setInstitutionName(updatedUser.GetInstitutionName());
         currentUser.setSiteType(updatedUser.getSiteType());
+        currentUser.setParticipantsLimit(updatedUser.getParticipantsLimit());
 
         researchRepository.save(currentUser);
        
