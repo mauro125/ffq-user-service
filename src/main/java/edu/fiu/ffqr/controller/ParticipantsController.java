@@ -21,6 +21,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import edu.fiu.ffqr.models.Participant;
 import edu.fiu.ffqr.service.ParticipantsService;
 import edu.fiu.ffqr.repositories.ParticipantsRepository;
+import edu.fiu.ffqr.service.ResultsService;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -31,6 +32,8 @@ public class ParticipantsController {
     private ParticipantsService participantsService;
     @Autowired
     private ParticipantsRepository participantRepository;
+    @Autowired
+    private ResultsService resultsService;
 
     public ParticipantsController() {
     }
@@ -102,6 +105,7 @@ public class ParticipantsController {
 
     @DeleteMapping("/delete")
     public String delete(@RequestParam String userId) {
+        resultsService.deleteResultsByUserId(userId);
         participantsService.deleteById(userId);
         return "Deleted " + userId;
     }
